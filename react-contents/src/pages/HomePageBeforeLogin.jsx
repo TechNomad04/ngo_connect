@@ -1,9 +1,11 @@
-import WelcomeMessage from "../components/HomePage/WelcomeMessage";
-import Card from "../components/HomePage/Card";
+import WelcomeMessage from "../components/HomePageBLogin/WelcomeMessage";
+import Card from "../components/HomePageBLogin/Card";
+import Navbar from "../components/Navbar";
 
 export default function HomePage() {
   return (
     <div>
+        <Navbar/>
         <WelcomeMessage/>
         <div className="flex justify-center items-center gap-10">
             <Card
