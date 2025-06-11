@@ -2,7 +2,7 @@ import WelcomeMessage from "../components/HomePageBLogin/WelcomeMessage";
 import Card from "../components/HomePageBLogin/Card";
 import Navbar from "../components/Navbar";
 
-export default function HomePage() {
+export default function HomePageBLogin() {
   return (
     <div>
         <Navbar/>
