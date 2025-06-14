@@ -1,0 +1,22 @@
+const express = require('express')
+const userRoutes = require('./userRoutes')
+const db = require('./db')
+
+const app = express()
+
+app.use(express.json())
+
+db();
+
+app.use('/users', userRoutes);
+
+app.use((req, res) => {
+    return res.status(400).json({status: false, message: "Not found"})
+})
+
+app.use((err, res, req) => {
+    console.log(err)
+    return res.status(500).json({status:false, message: "Internal server error"})
+})
+
+app.listen(process.env.PORT, () => console.log("Server started"))
