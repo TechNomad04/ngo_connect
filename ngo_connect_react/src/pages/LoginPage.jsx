@@ -8,13 +8,20 @@ function LoginPage() {
     const [password, setPassword] = useState('');
 
     const handleLogin = async () => {
-        const response = await axios.post("http://localhost:5000/users/login", {
-            email, 
-            username,
-            password
-        })
+        try{
+            const response = await axios.post("http://localhost:5000/users/register", {
+                email, 
+                username,
+                password
+            })
 
-        alert(response.data.message);
+            alert(response.data.message);
+        } catch(err) {
+            if(err.response)
+                alert(err.response.data)
+            else
+            alert("something went wrong")
+        }
     }
 
     return (

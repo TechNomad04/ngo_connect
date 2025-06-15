@@ -5,9 +5,12 @@ require('dotenv').config()
 const register = async (req, res) => {
     try{
         const {email, username, password} = req.body;
-        const userQ = await User.findOne({$or: [{email}, {username}]})
-        if(userQ)
-            return res.status(409).json({status:false, message: "User already exists"})
+        const userE = await User.findOne({email: email})
+        if(userE)
+            return res.status(409).json({ status: false, message: "Email already exists" })
+        const userU = await User.findOne({username: username})
+        if(userU)
+            return res.status(409).json({ status: false, message: "Username already exists" })
         const grained = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, grained);
         const user = new User({email, username, password: hashedPassword});
